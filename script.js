@@ -14,7 +14,8 @@ const sarcasticRemarks = [
     "Thank you for gracing us with your...limited intelligence",
     "As if I can't find more reasons not to date, you give me another one",
     "Yes I love hearing your outdated ideals and grow backwards!",
-    "Oh that's a compliment? How cute"
+    "Oh that's a compliment? How cute",
+    "Your sarcasm is so subtle, it's almost undetectable. Almost."
 ];
 
 const fontStyles = ['Madimi One', 'Plus Jakarta Sans', 'Inter', 'Pompiere'];
