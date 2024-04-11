@@ -85,80 +85,6 @@ function generateRandomStyle() {
 //     document.body.style.backgroundColor = backgroundColor[0];
 // }
 
-function generateSarcasticRemark(event) {
-    var instructions = document.getElementById('instructions');
-    instructions.style.display = "none";
-
-    var quotes = document.getElementById('quotes');
-    quotes.style.display = "none";
-
-    const existingRemarks = document.querySelectorAll('.sarcastic-remark');
-    existingRemarks.forEach(remark => remark.remove());
-
-    const sarcasticRemark = getRandomElement(sarcasticRemarks);
-    const { fontStyle, backgroundColor } = generateRandomStyle();
-
-    const sarcasticRemarkElement = document.createElement('div');
-    sarcasticRemarkElement.textContent = sarcasticRemark;
-    sarcasticRemarkElement.style.fontFamily = fontStyle;
-    sarcasticRemarkElement.style.backgroundColor = backgroundColor[0];
-    sarcasticRemarkElement.style.color = backgroundColor[1];
-    sarcasticRemarkElement.style.fontSize = getRandomFontSize();
-    sarcasticRemarkElement.style.position = 'absolute';
-
-    // Adjusting position based on click position
-    const offsetX = 0; // Adjust this value to your preference
-    const offsetY = 40; // Adjust this value to your preference
-    const maxX = window.innerWidth - sarcasticRemarkElement.offsetWidth - offsetX;
-    const maxY = window.innerHeight - sarcasticRemarkElement.offsetHeight - offsetY;
-    const left = Math.min(event.clientX + offsetX, maxX);
-    const top = Math.min(event.clientY + offsetY, maxY);
-    sarcasticRemarkElement.style.left = left + 'px';
-    sarcasticRemarkElement.style.top = top + 'px';
-    sarcasticRemarkElement.classList.add('sarcastic-remark');
-
-    document.body.appendChild(sarcasticRemarkElement);
-
-    document.body.style.backgroundColor = backgroundColor[0];
-}
-
-// function generateSarcasticRemark(event) {
-//     var instructions = document.getElementById('instructions');
-//     instructions.style.display = "none";
-
-//     var quotes = document.getElementById('quotes');
-//     quotes.style.display = "none";
-
-//     const existingRemarks = document.querySelectorAll('.sarcastic-remark');
-//     existingRemarks.forEach(remark => remark.remove());
-
-//     const sarcasticRemark = getRandomElement(sarcasticRemarks);
-//     const { fontStyle, backgroundColor } = generateRandomStyle();
-
-//     const sarcasticRemarkElement = document.createElement('div');
-//     sarcasticRemarkElement.textContent = sarcasticRemark;
-//     sarcasticRemarkElement.style.fontFamily = fontStyle;
-//     sarcasticRemarkElement.style.backgroundColor = backgroundColor[0];
-//     sarcasticRemarkElement.style.color = backgroundColor[1];
-//     sarcasticRemarkElement.style.fontSize = getRandomFontSize();
-//     sarcasticRemarkElement.style.position = 'absolute';
-
-//     // Adjusting position based on click position
-//     const offsetX = 40; // Adjust this value to your preference
-//     const offsetY = 50; // Adjust this value to your preference
-//     const maxX = window.innerWidth - sarcasticRemarkElement.offsetWidth - offsetX;
-//     const maxY = window.innerHeight - sarcasticRemarkElement.offsetHeight - offsetY;
-//     const left = Math.min(event.clientX + offsetX, maxX);
-//     const top = Math.min(event.clientY + offsetY, maxY);
-//     sarcasticRemarkElement.style.left = left + 'px';
-//     sarcasticRemarkElement.style.top = top + 'px';
-//     sarcasticRemarkElement.classList.add('sarcastic-remark');
-
-//     document.body.appendChild(sarcasticRemarkElement);
-
-//     document.body.style.backgroundColor = backgroundColor[0];
-// }
-
 // function generateSarcasticRemark(event) {
 //     var instructions = document.getElementById('instructions');
 //     instructions.style.display = "none";
@@ -182,17 +108,11 @@ function generateSarcasticRemark(event) {
 
 //     // Adjusting position based on click position
 //     const offsetX = 0; // Adjust this value to your preference
-//     const offsetY = 50; // Adjust this value to your preference
+//     const offsetY = 40; // Adjust this value to your preference
 //     const maxX = window.innerWidth - sarcasticRemarkElement.offsetWidth - offsetX;
 //     const maxY = window.innerHeight - sarcasticRemarkElement.offsetHeight - offsetY;
-//     let left = Math.min(event.clientX + offsetX, maxX);
+//     const left = Math.min(event.clientX + offsetX, maxX);
 //     const top = Math.min(event.clientY + offsetY, maxY);
-
-//     // Adjust left position if necessary to prevent cutting off on the right
-//     if (left <0) {
-//         left = 0;
-//     }
-
 //     sarcasticRemarkElement.style.left = left + 'px';
 //     sarcasticRemarkElement.style.top = top + 'px';
 //     sarcasticRemarkElement.classList.add('sarcastic-remark');
@@ -201,6 +121,58 @@ function generateSarcasticRemark(event) {
 
 //     document.body.style.backgroundColor = backgroundColor[0];
 // }
+
+function generateSarcasticRemark(event) {
+    var instructions = document.getElementById('instructions');
+    instructions.style.display = "none";
+
+    var quotes = document.getElementById('quotes');
+    quotes.style.display = "none";
+
+    const existingRemarks = document.querySelectorAll('.sarcastic-remark');
+    existingRemarks.forEach(remark => remark.remove());
+
+    const sarcasticRemark = getRandomElement(sarcasticRemarks);
+    const { fontStyle, backgroundColor } = generateRandomStyle();
+
+    const sarcasticRemarkElement = document.createElement('div');
+    sarcasticRemarkElement.textContent = sarcasticRemark;
+    sarcasticRemarkElement.style.fontFamily = fontStyle;
+    sarcasticRemarkElement.style.backgroundColor = backgroundColor[0];
+    sarcasticRemarkElement.style.color = backgroundColor[1];
+    sarcasticRemarkElement.style.fontSize = getRandomFontSize();
+    sarcasticRemarkElement.style.position = 'absolute';
+
+    const offsetX = 50; // Adjust this value to your preference
+    const offsetY = 50; // Adjust this value to your preference
+
+    // Adjusting position based on click location
+    let left, top;
+    if (event.clientX > window.innerWidth / 2) {
+        // Clicked on the right side of the screen
+        left = event.clientX - sarcasticRemarkElement.offsetWidth - offsetX;
+    } else {
+        // Clicked on the left side of the screen
+        left = event.clientX + offsetX;
+    }
+
+    if (event.clientY > window.innerHeight / 2) {
+        // Clicked on the bottom side of the screen
+        top = event.clientY - sarcasticRemarkElement.offsetHeight - offsetY;
+    } else {
+        // Clicked on the top side of the screen
+        top = event.clientY + offsetY;
+    }
+
+    sarcasticRemarkElement.style.left = Math.max(left, 0) + 'px'; // Ensure left position is not negative
+    sarcasticRemarkElement.style.top = Math.max(top, 0) + 'px'; // Ensure top position is not negative
+    sarcasticRemarkElement.classList.add('sarcastic-remark');
+
+    document.body.appendChild(sarcasticRemarkElement);
+
+    document.body.style.backgroundColor = backgroundColor[0];
+}
+
 
 
 function getRandomFontSize() {
