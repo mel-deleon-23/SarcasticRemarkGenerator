@@ -15,7 +15,10 @@ const sarcasticRemarks = [
     "As if I can't find more reasons not to date, you give me another one",
     "Yes I love hearing your outdated ideals and grow backwards!",
     "Oh that's a compliment? How cute",
-    "Your sarcasm is so subtle, it's almost undetectable. Almost."
+    "Your sarcasm is so subtle, it's almost undetectable. Almost.",
+    "Oh, brilliant idea! Let's add more steps to the process to ensure we waste even more time.",
+    "Your unsolicited advice is exactly what I needed to make my day complete.",
+    "Well, isn't that just the most fascinating story I've ever heard? Please, do go on."
 ];
 
 const fontStyles = ['Madimi One', 'Plus Jakarta Sans', 'Inter', 'Pompiere'];
