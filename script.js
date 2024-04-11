@@ -143,7 +143,7 @@ function generateSarcasticRemark(event) {
     sarcasticRemarkElement.style.fontSize = getRandomFontSize();
     sarcasticRemarkElement.style.position = 'absolute';
 
-    const offsetX = 50; // Adjust this value to your preference
+    const offsetX = 30; // Adjust this value to your preference
     const offsetY = 50; // Adjust this value to your preference
 
     // Adjusting position based on click location
@@ -164,8 +164,8 @@ function generateSarcasticRemark(event) {
         top = event.clientY + offsetY;
     }
 
-    sarcasticRemarkElement.style.left = Math.max(left, 0) + 'px'; // Ensure left position is not negative
-    sarcasticRemarkElement.style.top = Math.max(top, 0) + 'px'; // Ensure top position is not negative
+    sarcasticRemarkElement.style.left = Math.max(left, 0) + 'px'; 
+    sarcasticRemarkElement.style.top = Math.max(top, 0) + 'px'; 
     sarcasticRemarkElement.classList.add('sarcastic-remark');
 
     document.body.appendChild(sarcasticRemarkElement);
